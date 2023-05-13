@@ -71,7 +71,6 @@ func main() {
 
 	// If the input path is a directory, walk the directory and process each file
 	if fi.IsDir() {
-		fmt.Println("Processing directory")
 		err = filepath.Walk(inputPath, func(path string, info os.FileInfo, err error) error {
 			if err != nil {
 				return err
@@ -93,7 +92,6 @@ func main() {
 			return nil
 		})
 	} else if filepath.Ext(inputPath) == ".paprikarecipes" {
-		fmt.Println("Processing zip file")
 		// The paprika output is a zip archive, so we need to extract the files from the archive
 		zr, err := zip.OpenReader(inputPath)
 		if err != nil {
@@ -147,5 +145,4 @@ func main() {
 			return
 		}
 	}
-
 }
